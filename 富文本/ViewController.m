@@ -11,12 +11,13 @@
 #import "KSTextSegment.h"
 #import "KSEmotionTool.h"
 #import "KSEmotion.h"
+#import "KSTextView.h"
 
 @interface ViewController ()
 {
     NSString *_text;
 //    NSAttributedString *attributeText;
-    UILabel *_label;
+    KSTextView *_label;
 }
 @end
 
@@ -29,7 +30,7 @@
     
     _text = @"#呵呵呵#[偷笑]//http://foo.com/blah_blah @Ring花椰菜:就舍不得打[挖鼻屎]@崔西狮:小拳头举起又放下了 说点啥好呢…… //@toto97:@崔西狮 蹦米咋不揍他#哈哈哈# http://foo.com/blah_blah";
    
-    _label = [[UILabel alloc] init];
+    _label = [[KSTextView alloc] init];
     _label.attributedText = [self attributeStringWithText:_text];
     
 //    CGSize textSize = [self.label.text boundingRectWithSize:CGSizeMake(300, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: font} context:nil].size;
@@ -37,13 +38,12 @@
     // 计算属性文字的 size
     CGSize attributeTextSize = [_label.attributedText boundingRectWithSize:CGSizeMake(300, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
     
-    _label.numberOfLines = 0;
+//    _label.numberOfLines = 0;
     _label.font = kFont;
     _label.frame = CGRectMake(20, 40, 300, attributeTextSize.height);
   
     [self.view addSubview:_label];
-    
-    
+    _label selectionRectsForRange:<#(UITextRange *)#>
 }
 
 /* 对于表情文字的处理
@@ -117,7 +117,7 @@
             KSEmotion *emotion = [KSEmotionTool emotionWithChs:seg.text];
             if (emotion) {
                 attatchment.image = [UIImage imageNamed:emotion.png];
-                attatchment.bounds = CGRectMake(0, -3, kFont.lineHeight, kFont.lineHeight);
+                attatchment.bounds = CGRectMake(0, 0, kFont.lineHeight, kFont.lineHeight);
                 substr = [NSAttributedString attributedStringWithAttachment:attatchment];
             } else {
                 substr = [[NSAttributedString alloc] initWithString:seg.text];
@@ -139,6 +139,8 @@
     [attributeText addAttribute:NSFontAttributeName value: kFont range: NSMakeRange(0, attributeText.length)];
     
     return attributeText;
+    
+
 }
 
 @end

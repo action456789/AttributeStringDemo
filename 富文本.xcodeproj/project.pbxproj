@@ -22,6 +22,7 @@
 		10746F451BA956DE006D49FD /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 10746F381BA956DE006D49FD /* NSObject+MJKeyValue.m */; };
 		10746F461BA956DE006D49FD /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 10746F3A1BA956DE006D49FD /* NSObject+MJProperty.m */; };
 		10746F471BA956DE006D49FD /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 10746F3C1BA956DE006D49FD /* NSString+MJExtension.m */; };
+		10746F4D1BA96AE7006D49FD /* KSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10746F4C1BA96AE7006D49FD /* KSTextView.m */; };
 		10C45DB31BA81C7000CEAA4A /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C45DB21BA81C7000CEAA4A /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10C45DB51BA81C9C00CEAA4A /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C45DB41BA81C9C00CEAA4A /* libicucore.dylib */; };
 		10C45E9A1BA8230B00CEAA4A /* d_aini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C45DB81BA8230A00CEAA4A /* d_aini@2x.png */; };
@@ -298,6 +299,8 @@
 		10746F3A1BA956DE006D49FD /* NSObject+MJProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJProperty.m"; sourceTree = "<group>"; };
 		10746F3B1BA956DE006D49FD /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
 		10746F3C1BA956DE006D49FD /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
+		10746F4B1BA96AE7006D49FD /* KSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTextView.h; sourceTree = "<group>"; };
+		10746F4C1BA96AE7006D49FD /* KSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSTextView.m; sourceTree = "<group>"; };
 		10C45DB11BA81C7000CEAA4A /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		10C45DB21BA81C7000CEAA4A /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		10C45DB41BA81C9C00CEAA4A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -573,6 +576,7 @@
 		10746F1C1BA952C4006D49FD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				10746F4A1BA96AD5006D49FD /* View */,
 				10746F1E1BA95317006D49FD /* Tools */,
 				10746F1D1BA952DA006D49FD /* Controller */,
 				10C45DAF1BA81C4600CEAA4A /* lib */,
@@ -627,6 +631,15 @@
 				10746F3C1BA956DE006D49FD /* NSString+MJExtension.m */,
 			);
 			path = MJExtension;
+			sourceTree = "<group>";
+		};
+		10746F4A1BA96AD5006D49FD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				10746F4B1BA96AE7006D49FD /* KSTextView.h */,
+				10746F4C1BA96AE7006D49FD /* KSTextView.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		10C45DAF1BA81C4600CEAA4A /* lib */ = {
@@ -1300,6 +1313,7 @@
 				10DEB19E1BA7CAE80071789B /* AppDelegate.m in Sources */,
 				10DEB19B1BA7CAE80071789B /* main.m in Sources */,
 				10746F401BA956DE006D49FD /* MJProperty.m in Sources */,
+				10746F4D1BA96AE7006D49FD /* KSTextView.m in Sources */,
 				10746F3E1BA956DE006D49FD /* MJExtensionConst.m in Sources */,
 				10746F1A1BA91A0B006D49FD /* Foundation+Log.m in Sources */,
 				10746F441BA956DE006D49FD /* NSObject+MJCoding.m in Sources */,
