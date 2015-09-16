@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "RegexKitLite.h"
 #import "KSTextSegment.h"
+#import "KSEmotionTool.h"
+#import "KSEmotion.h"
 
 @interface ViewController ()
 {
@@ -25,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _text = @"#呵呵呵#[偷笑] http://foo.com/blah_blah #解放军#//http://foo.com/blah_blah @Ring花椰菜:就#范德萨发生的#舍不得打[test] 就惯#急急急#着他吧[挖鼻屎]//@崔西狮:小拳头举起又放下了 说点啥好呢…… //@toto97:@崔西狮 蹦米咋不揍他#哈哈哈# http://foo.com/blah_blah";
+    _text = @"#呵呵呵#[偷笑]//http://foo.com/blah_blah @Ring花椰菜:就舍不得打[挖鼻屎]@崔西狮:小拳头举起又放下了 说点啥好呢…… //@toto97:@崔西狮 蹦米咋不揍他#哈哈哈# http://foo.com/blah_blah";
    
     _label = [[UILabel alloc] init];
     _label.attributedText = [self attributeStringWithText:_text];
@@ -38,10 +40,10 @@
     _label.numberOfLines = 0;
     _label.font = kFont;
     _label.frame = CGRectMake(20, 40, 300, attributeTextSize.height);
-    
-    
+  
     [self.view addSubview:_label];
-
+    
+    
 }
 
 /* 对于表情文字的处理
@@ -53,20 +55,22 @@
  */
 - (NSAttributedString *)attributeStringWithText:(NSString *)text {
     
+    // 正则表达式：
     // 表情的规则
-    NSString *emotionPattern = @"\\[[0-9a-zA-Z\\u4e00-\\u9fa5]+\\]"; // \\u4e00-\\u9fa5 表示所有中文，\\[ 表示[的转义
+    NSString *emotionPattern = @"\\[[0-9a-zA-Z\\u4e00-\\u9fa5]+\\]";// \\u4e00-\\u9fa5 表示所有中文，\\[ 表示[的转义
     // @的规则
-    NSString *atPattern = @"@[0-9a-zA-Z\\u4e00-\\u9fa5]+";
+    NSString *atPattern      = @"@[0-9a-zA-Z\\u4e00-\\u9fa5]+";
     // #话题#的规则
-    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5]+#";
+    NSString *topicPattern   = @"#[0-9a-zA-Z\\u4e00-\\u9fa5]+#";
     // url链接的规则
-    NSString *urlPattern = @"\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))";
+    NSString *urlPattern     = @"\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))";
+    
     NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@", emotionPattern, atPattern, topicPattern, urlPattern];
 
     NSMutableArray *parts = [NSMutableArray array];
     
     // 使用正则表达式遍历特殊字符
-    [_text enumerateStringsMatchedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+    [text enumerateStringsMatchedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
         
         if ((*capturedStrings).length == 0) return;
         
@@ -74,26 +78,27 @@
         seg.text = *capturedStrings;
         seg.range = *capturedRanges;
         seg.special = YES;
+        seg.emotion =  [seg.text hasPrefix:@"["] && [seg.text hasSuffix:@"]"];
         
         [parts addObject:seg];
     }];
     
     // 按照正则表达式遍历所有非特殊字符
-    [_text enumerateStringsSeparatedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
+    [text enumerateStringsSeparatedByRegex:pattern usingBlock:^(NSInteger captureCount, NSString *const __unsafe_unretained *capturedStrings, const NSRange *capturedRanges, volatile BOOL *const stop) {
        
         if ((*capturedStrings).length == 0) return;
        
         KSTextSegment *seg = [[KSTextSegment alloc] init];
         seg.text = *capturedStrings;
         seg.range = *capturedRanges;
-        seg.special = NO;
         
         [parts addObject:seg];
     
     }];
 
     // 排序
-    [parts sortedArrayUsingComparator:^NSComparisonResult(KSTextSegment *obj1, KSTextSegment *obj2) {
+    [parts sortUsingComparator:^NSComparisonResult(KSTextSegment *obj1, KSTextSegment *obj2) {
+        
         if (obj1.range.location > obj2.range.location) {
             return NSOrderedDescending; // 大的放后面
         }
@@ -101,26 +106,37 @@
         // return obj1.range.location > obj2.range.location ? NSOrderedDescending : NSOrderedAscending;
     }];
     
-    NSLog(@"%@", parts);
-    
     NSMutableAttributedString *attributeText = [[NSMutableAttributedString alloc] init];
-    // 设置字体
-    [attributeText addAttribute:NSFontAttributeName value: kFont range: NSMakeRange(0, attributeText.length)];
     
     // 按顺序拼接文字
     for (KSTextSegment *seg in parts) {
-        // 特殊文字
-        if (seg.isSpecial) {
+        
+        NSAttributedString *substr = nil;
+        if (seg.isEmotion) { // 表情文字
+            NSTextAttachment *attatchment = [[NSTextAttachment alloc] init];
+            KSEmotion *emotion = [KSEmotionTool emotionWithChs:seg.text];
+            if (emotion) {
+                attatchment.image = [UIImage imageNamed:emotion.png];
+                attatchment.bounds = CGRectMake(0, -3, kFont.lineHeight, kFont.lineHeight);
+                substr = [NSAttributedString attributedStringWithAttachment:attatchment];
+            } else {
+                substr = [[NSAttributedString alloc] initWithString:seg.text];
+            }
+            
+        } else if (seg.isSpecial) { // 特殊文字
+        
+            substr = [[NSAttributedString alloc] initWithString:seg.text attributes:@{NSForegroundColorAttributeName : [UIColor blueColor]}];
             
         } else { // 非特殊文字
 
-            [attributeText appendAttributedString: [[NSAttributedString alloc] initWithString:seg.text]];
+            substr = [[NSAttributedString alloc] initWithString:seg.text];
         }
+        
+        [attributeText appendAttributedString:substr];
     }
     
-    NSTextAttachment *attatchment = [[NSTextAttachment alloc] init];
-    attatchment.image = [UIImage imageNamed:@"d_aini"];
-    [attributeText appendAttributedString:[NSMutableAttributedString attributedStringWithAttachment:attatchment]];
+    // 设置字体
+    [attributeText addAttribute:NSFontAttributeName value: kFont range: NSMakeRange(0, attributeText.length)];
     
     return attributeText;
 }
