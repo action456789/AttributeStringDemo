@@ -12,6 +12,7 @@
 #import "KSEmotionTool.h"
 #import "KSEmotion.h"
 #import "KSTextView.h"
+#import "KSSpecialText.h"
 
 @interface ViewController ()
 {
@@ -43,7 +44,7 @@
     _label.frame = CGRectMake(20, 40, 300, attributeTextSize.height);
   
     [self.view addSubview:_label];
-    _label selectionRectsForRange:<#(UITextRange *)#>
+
 }
 
 /* 对于表情文字的处理
@@ -108,6 +109,7 @@
     
     NSMutableAttributedString *attributeText = [[NSMutableAttributedString alloc] init];
     
+    NSMutableArray *specialTexts = [NSMutableArray array];
     // 按顺序拼接文字
     for (KSTextSegment *seg in parts) {
         
@@ -126,6 +128,15 @@
         } else if (seg.isSpecial) { // 特殊文字
         
             substr = [[NSAttributedString alloc] initWithString:seg.text attributes:@{NSForegroundColorAttributeName : [UIColor blueColor]}];
+
+            // 将特殊文字的文本内容和拼接后的位置用 KSSpecialText 对象保存起来
+            KSSpecialText *specialText = [[KSSpecialText alloc] init];
+            specialText.text = seg.text;
+            // 计算拼接后的位置
+            NSUInteger loc = attributeText.length;
+            NSUInteger len = seg.text.length;
+            specialText.range = NSMakeRange(loc, len);
+            [specialTexts addObject:specialText];
             
         } else { // 非特殊文字
 
@@ -137,10 +148,14 @@
     
     // 设置字体
     [attributeText addAttribute:NSFontAttributeName value: kFont range: NSMakeRange(0, attributeText.length)];
+
+    // 将 specileTexts 数组绑定到 attributeText 中
+    [attributeText addAttribute:@"specileTexts" value:specialTexts range:NSMakeRange(0, 1)];
     
     return attributeText;
-    
-
 }
+
+
+
 
 @end

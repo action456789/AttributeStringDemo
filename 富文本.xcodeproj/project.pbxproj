@@ -251,11 +251,12 @@
 		10C45F791BA8230B00CEAA4A /* lxh_zhuanfa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C45E991BA8230B00CEAA4A /* lxh_zhuanfa@2x.png */; };
 		10DEB19B1BA7CAE80071789B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DEB19A1BA7CAE80071789B /* main.m */; };
 		10DEB19E1BA7CAE80071789B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DEB19D1BA7CAE80071789B /* AppDelegate.m */; };
-		10DEB1A11BA7CAE80071789B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DEB1A01BA7CAE80071789B /* ViewController.m */; };
 		10DEB1A41BA7CAE80071789B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10DEB1A21BA7CAE80071789B /* Main.storyboard */; };
 		10DEB1A61BA7CAE80071789B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10DEB1A51BA7CAE80071789B /* Images.xcassets */; };
 		10DEB1A91BA7CAE80071789B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DEB1A71BA7CAE80071789B /* LaunchScreen.xib */; };
 		10DEB1B51BA7CAE80071789B /* ___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DEB1B41BA7CAE80071789B /* ___Tests.m */; };
+		10F37B0B1BAAA6B2000DB301 /* KSSpecialText.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F37B0A1BAAA6B2000DB301 /* KSSpecialText.m */; };
+		10F37B0D1BAAA6D9000DB301 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F37B0C1BAAA6D9000DB301 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -534,13 +535,15 @@
 		10DEB19C1BA7CAE80071789B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		10DEB19D1BA7CAE80071789B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		10DEB19F1BA7CAE80071789B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		10DEB1A01BA7CAE80071789B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		10DEB1A31BA7CAE80071789B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10DEB1A51BA7CAE80071789B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		10DEB1A81BA7CAE80071789B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		10DEB1AE1BA7CAE80071789B /* 富文本Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "富文本Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10DEB1B31BA7CAE80071789B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10DEB1B41BA7CAE80071789B /* ___Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___Tests.m"; sourceTree = "<group>"; };
+		10F37B091BAAA6B2000DB301 /* KSSpecialText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSSpecialText.h; path = ../KSSpecialText.h; sourceTree = "<group>"; };
+		10F37B0A1BAAA6B2000DB301 /* KSSpecialText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSSpecialText.m; path = ../KSSpecialText.m; sourceTree = "<group>"; };
+		10F37B0C1BAAA6D9000DB301 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -569,6 +572,8 @@
 				10746F171BA9172D006D49FD /* KSTextSegment.m */,
 				10746F1F1BA95358006D49FD /* KSEmotion.h */,
 				10746F201BA95358006D49FD /* KSEmotion.m */,
+				10F37B091BAAA6B2000DB301 /* KSSpecialText.h */,
+				10F37B0A1BAAA6B2000DB301 /* KSSpecialText.m */,
 			);
 			name = Modal;
 			sourceTree = "<group>";
@@ -589,7 +594,7 @@
 			isa = PBXGroup;
 			children = (
 				10DEB19F1BA7CAE80071789B /* ViewController.h */,
-				10DEB1A01BA7CAE80071789B /* ViewController.m */,
+				10F37B0C1BAAA6D9000DB301 /* ViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1303,16 +1308,17 @@
 				10C45DB31BA81C7000CEAA4A /* RegexKitLite.m in Sources */,
 				10746F461BA956DE006D49FD /* NSObject+MJProperty.m in Sources */,
 				10746F3F1BA956DE006D49FD /* MJFoundation.m in Sources */,
+				10F37B0D1BAAA6D9000DB301 /* ViewController.m in Sources */,
 				10746F241BA955A2006D49FD /* KSEmotionTool.m in Sources */,
 				10746F431BA956DE006D49FD /* NSObject+MJClass.m in Sources */,
 				10746F471BA956DE006D49FD /* NSString+MJExtension.m in Sources */,
-				10DEB1A11BA7CAE80071789B /* ViewController.m in Sources */,
 				10746F181BA9172E006D49FD /* KSTextSegment.m in Sources */,
 				10746F421BA956DE006D49FD /* MJPropertyType.m in Sources */,
 				10746F451BA956DE006D49FD /* NSObject+MJKeyValue.m in Sources */,
 				10DEB19E1BA7CAE80071789B /* AppDelegate.m in Sources */,
 				10DEB19B1BA7CAE80071789B /* main.m in Sources */,
 				10746F401BA956DE006D49FD /* MJProperty.m in Sources */,
+				10F37B0B1BAAA6B2000DB301 /* KSSpecialText.m in Sources */,
 				10746F4D1BA96AE7006D49FD /* KSTextView.m in Sources */,
 				10746F3E1BA956DE006D49FD /* MJExtensionConst.m in Sources */,
 				10746F1A1BA91A0B006D49FD /* Foundation+Log.m in Sources */,
