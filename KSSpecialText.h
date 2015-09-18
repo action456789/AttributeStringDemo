@@ -16,4 +16,7 @@
 /** 这段特殊文字的范围 */
 @property (nonatomic, assign) NSRange  range;
 
+/***  这段特殊文本在整个文本中的矩形框*/
+@property (nonatomic, strong) NSArray  *rects;
+
 @end
