@@ -23,6 +23,7 @@
 		10746F461BA956DE006D49FD /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 10746F3A1BA956DE006D49FD /* NSObject+MJProperty.m */; };
 		10746F471BA956DE006D49FD /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 10746F3C1BA956DE006D49FD /* NSString+MJExtension.m */; };
 		10746F4D1BA96AE7006D49FD /* KSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10746F4C1BA96AE7006D49FD /* KSTextView.m */; };
+		107D09CE1BABE48B0019BFF1 /* KSSpecialText.m in Sources */ = {isa = PBXBuildFile; fileRef = 107D09CD1BABE48B0019BFF1 /* KSSpecialText.m */; };
 		10C45DB31BA81C7000CEAA4A /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C45DB21BA81C7000CEAA4A /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		10C45DB51BA81C9C00CEAA4A /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C45DB41BA81C9C00CEAA4A /* libicucore.dylib */; };
 		10C45E9A1BA8230B00CEAA4A /* d_aini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 10C45DB81BA8230A00CEAA4A /* d_aini@2x.png */; };
@@ -255,7 +256,6 @@
 		10DEB1A61BA7CAE80071789B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10DEB1A51BA7CAE80071789B /* Images.xcassets */; };
 		10DEB1A91BA7CAE80071789B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10DEB1A71BA7CAE80071789B /* LaunchScreen.xib */; };
 		10DEB1B51BA7CAE80071789B /* ___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 10DEB1B41BA7CAE80071789B /* ___Tests.m */; };
-		10F37B0B1BAAA6B2000DB301 /* KSSpecialText.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F37B0A1BAAA6B2000DB301 /* KSSpecialText.m */; };
 		10F37B0D1BAAA6D9000DB301 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F37B0C1BAAA6D9000DB301 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -302,6 +302,8 @@
 		10746F3C1BA956DE006D49FD /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
 		10746F4B1BA96AE7006D49FD /* KSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSTextView.h; sourceTree = "<group>"; };
 		10746F4C1BA96AE7006D49FD /* KSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSTextView.m; sourceTree = "<group>"; };
+		107D09CC1BABE48B0019BFF1 /* KSSpecialText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSSpecialText.h; sourceTree = "<group>"; };
+		107D09CD1BABE48B0019BFF1 /* KSSpecialText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSSpecialText.m; sourceTree = "<group>"; };
 		10C45DB11BA81C7000CEAA4A /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		10C45DB21BA81C7000CEAA4A /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		10C45DB41BA81C9C00CEAA4A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -541,8 +543,6 @@
 		10DEB1AE1BA7CAE80071789B /* 富文本Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "富文本Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10DEB1B31BA7CAE80071789B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10DEB1B41BA7CAE80071789B /* ___Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___Tests.m"; sourceTree = "<group>"; };
-		10F37B091BAAA6B2000DB301 /* KSSpecialText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KSSpecialText.h; path = ../KSSpecialText.h; sourceTree = "<group>"; };
-		10F37B0A1BAAA6B2000DB301 /* KSSpecialText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KSSpecialText.m; path = ../KSSpecialText.m; sourceTree = "<group>"; };
 		10F37B0C1BAAA6D9000DB301 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -568,12 +568,12 @@
 		10746F1B1BA952BB006D49FD /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				107D09CC1BABE48B0019BFF1 /* KSSpecialText.h */,
+				107D09CD1BABE48B0019BFF1 /* KSSpecialText.m */,
 				10746F161BA9172D006D49FD /* KSTextSegment.h */,
 				10746F171BA9172D006D49FD /* KSTextSegment.m */,
 				10746F1F1BA95358006D49FD /* KSEmotion.h */,
 				10746F201BA95358006D49FD /* KSEmotion.m */,
-				10F37B091BAAA6B2000DB301 /* KSSpecialText.h */,
-				10F37B0A1BAAA6B2000DB301 /* KSSpecialText.m */,
 			);
 			name = Modal;
 			sourceTree = "<group>";
@@ -1307,6 +1307,7 @@
 			files = (
 				10C45DB31BA81C7000CEAA4A /* RegexKitLite.m in Sources */,
 				10746F461BA956DE006D49FD /* NSObject+MJProperty.m in Sources */,
+				107D09CE1BABE48B0019BFF1 /* KSSpecialText.m in Sources */,
 				10746F3F1BA956DE006D49FD /* MJFoundation.m in Sources */,
 				10F37B0D1BAAA6D9000DB301 /* ViewController.m in Sources */,
 				10746F241BA955A2006D49FD /* KSEmotionTool.m in Sources */,
@@ -1318,7 +1319,6 @@
 				10DEB19E1BA7CAE80071789B /* AppDelegate.m in Sources */,
 				10DEB19B1BA7CAE80071789B /* main.m in Sources */,
 				10746F401BA956DE006D49FD /* MJProperty.m in Sources */,
-				10F37B0B1BAAA6B2000DB301 /* KSSpecialText.m in Sources */,
 				10746F4D1BA96AE7006D49FD /* KSTextView.m in Sources */,
 				10746F3E1BA956DE006D49FD /* MJExtensionConst.m in Sources */,
 				10746F1A1BA91A0B006D49FD /* Foundation+Log.m in Sources */,
